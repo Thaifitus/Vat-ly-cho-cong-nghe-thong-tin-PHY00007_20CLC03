@@ -1,0 +1,13 @@
+// Chủ đề tham khảo
+Streetlight Monitoring System
+Smart Anti-Theft System
+Air Pollution Monitoring System
+
+// Chi tiết về wokwi
+https://forum.arduino.cc/t/virtual-online-arduino-and-esp32-simulator-wokwi-arduino-simulator-features/698481
+
+// Bài làm tham khảo
+https://www.ripublication.com/aeee/71_pp%20%20%20539-542.pdf
+
+// Link khác
+https://pianalytix.com/street-light-monitoring-system-using-iot/
