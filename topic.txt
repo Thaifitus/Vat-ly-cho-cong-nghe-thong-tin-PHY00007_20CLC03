@@ -1,0 +1,6 @@
+sys/x
+Với
+	x:
+		ledValue: trạng thái đèn (On/Off)
+		lightValue: giá trị ánh sáng (đơn vị lux)
+		tempValue: nhiệt độ môi trường (độ C)
