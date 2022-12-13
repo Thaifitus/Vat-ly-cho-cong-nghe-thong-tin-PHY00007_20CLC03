@@ -1,0 +1,5 @@
+Cách làm việc với các file
+Giải thích chương trình
+Ghi note cho mỗi node khi đưa vào node red
+Cường: lấy được các giá trị cho global variable
+Huân: đề ra topic để gửi nhận
