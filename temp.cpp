@@ -12,9 +12,12 @@ float celsius = 0;
 // Chế độ hệ thống (true: tự động, false: thủ công)
 String sysState = "true";
 // Photoresistor pin
-int photoPin = 13;
+int photoPin = 15;
 // Leds pin
 int ledPin0 = 12, ledPin1 = 14, ledPin2 = 27, ledPin3 = 26;
+// Temperature sensor pin
+int tempPin = 2;
+
 
 // ========== INTERNET CONNECTION ==========
 const char *ssid = "Wokwi-GUEST";
@@ -63,9 +66,19 @@ void setup()
     Serial.begin(115200);
     Serial.print("Connecting to WiFi");
 
-    wifiConnect();
-    client.setServer(mqttServer, port);
-    client.setCallback(callback);
+    // wifiConnect();
+    // client.setServer(mqttServer, port);
+    // client.setCallback(callback);
+
+    // Hệ thống đèn
+    pinMode(ledPin0, OUTPUT);
+    pinMode(ledPin1, OUTPUT);
+    pinMode(ledPin2, OUTPUT);
+    pinMode(ledPin3, OUTPUT);
+    // Cảm biến ánh sáng
+    pinMode(photoPin, INPUT);
+    // Cảm biến nhiệt độ
+    pinMode(tempPin, INPUT);
 }
 
 // MQTT Receiver
@@ -77,18 +90,18 @@ void callback(char *topic, byte *message, unsigned int length)
     {
         strMsg += (char)message[i];
     }
-    Serial.println(strMsg);
+    // Serial.println(strMsg);
     //***Insert code here to control other devices***
 }
 
 // ========== LOOP ==========
 void loop()
 {
-    if (!client.connected())
-    {
-        mqttReconnect();
-    }
-    client.loop();
+    // if (!client.connected())
+    // {
+    //     mqttReconnect();
+    // }
+    // client.loop();
 
     //***Change code to publish to MQTT Server***
     // int temp = random(0, 100);
@@ -97,8 +110,11 @@ void loop()
     // client.publish("mssv/temp", buffer);
 
     // Đo nhiệt độ môi trường bằng cảm biến nhiệt độ
-
+    const float BETA = 3950; // should match the Beta Coefficient of the thermistor
+    float analogValue = analogRead(tempPin) * (float)1023 / 4095;
+    celsius = 1 / (log(1 / (1023. / analogValue - 1)) / BETA + 1.0 / 298.15) - 273.15;
     //
+
     int state = sysState.compareTo("true");
     switch (state)
     {
@@ -111,16 +127,18 @@ void loop()
         const float RL10 = 50;
 
         // Convert the analog value into lux value:
-        float analogValue = analogRead(13) * (float)1023 / 4095;
+        float analogValue = analogRead(photoPin) * (float)1023 / 4095;
         float voltage = analogValue / 1024. * 5;
         float resistance = 2000 * voltage / (1 - voltage / 5);
-        float lux = pow(RL10 * 1e3 * pow(10, GAMMA) / resistance, (1 / GAMMA));
+        lux = pow(RL10 * 1e3 * pow(10, GAMMA) / resistance, (1 / GAMMA));
+        Serial.println(lux);
         if (lux <= 100)
         {
             digitalWrite(ledPin0, HIGH);
             digitalWrite(ledPin1, HIGH);
             digitalWrite(ledPin2, HIGH);
             digitalWrite(ledPin3, HIGH);
+            strcpy(ledState, "On");
         }
         else
         {
@@ -128,6 +146,7 @@ void loop()
             digitalWrite(ledPin1, LOW);
             digitalWrite(ledPin2, LOW);
             digitalWrite(ledPin3, LOW);
+            strcpy(ledState, "Off");
         }
 
         //
@@ -144,5 +163,5 @@ void loop()
     }
     }
 
-    delay(5000);
+    delay(1000);
 }
