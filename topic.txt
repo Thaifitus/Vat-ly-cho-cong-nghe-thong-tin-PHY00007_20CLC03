@@ -1,6 +1,6 @@
 sys/x:
 	x:
-		temp: nhiệt độ
+		temperature: nhiệt độ
 		led: tình trạng đèn (bật/tắt)
 		photo: giá trị ánh sáng (đơn vị lux)
 		sound: giá trị âm thanh
