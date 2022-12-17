@@ -11,3 +11,7 @@ https://www.ripublication.com/aeee/71_pp%20%20%20539-542.pdf
 
 // Link khác
 https://pianalytix.com/street-light-monitoring-system-using-iot/
+
+// Board ESP32 của wokwi là loại ESP32 DevKit v1 (link: ý nghĩa và cách sử dụng các pin (chân cắm) của board)
+https://lastminuteengineers.com/esp32-pinout-reference/
+
