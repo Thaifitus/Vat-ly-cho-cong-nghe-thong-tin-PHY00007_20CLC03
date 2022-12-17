@@ -4,20 +4,19 @@
 
 // ========== GLOBAL VARIABLE ==========
 // Giá trị ánh sáng (đơn vị đo: lux - lumen per square metre)
-float lux = 0;
+char lux[2];
 // Trạng thái đèn (On/Off), dùng strcpy để gán
 char ledState[4];
 // Nhiệt độ môi trường (độ C)
-float celsius = 0;
+char celsius[5];
 // Chế độ hệ thống (true: tự động, false: thủ công)
 String sysState = "true";
 // Photoresistor pin
-int photoPin = 15;
+int photoPin = 35;
 // Leds pin
 int ledPin0 = 12, ledPin1 = 14, ledPin2 = 27, ledPin3 = 26;
 // Temperature sensor pin
-int tempPin = 2;
-
+int tempPin = 32;
 
 // ========== INTERNET CONNECTION ==========
 const char *ssid = "Wokwi-GUEST";
@@ -66,9 +65,9 @@ void setup()
     Serial.begin(115200);
     Serial.print("Connecting to WiFi");
 
-    // wifiConnect();
-    // client.setServer(mqttServer, port);
-    // client.setCallback(callback);
+    wifiConnect();
+    client.setServer(mqttServer, port);
+    client.setCallback(callback);
 
     // Hệ thống đèn
     pinMode(ledPin0, OUTPUT);
@@ -97,11 +96,11 @@ void callback(char *topic, byte *message, unsigned int length)
 // ========== LOOP ==========
 void loop()
 {
-    // if (!client.connected())
-    // {
-    //     mqttReconnect();
-    // }
-    // client.loop();
+    if (!client.connected())
+    {
+        mqttReconnect();
+    }
+    client.loop();
 
     //***Change code to publish to MQTT Server***
     // int temp = random(0, 100);
@@ -112,7 +111,9 @@ void loop()
     // Đo nhiệt độ môi trường bằng cảm biến nhiệt độ
     const float BETA = 3950; // should match the Beta Coefficient of the thermistor
     float analogValue = analogRead(tempPin) * (float)1023 / 4095;
-    celsius = 1 / (log(1 / (1023. / analogValue - 1)) / BETA + 1.0 / 298.15) - 273.15;
+    float celsiusF = 1 / (log(1 / (1023. / analogValue - 1)) / BETA + 1.0 / 298.15) - 273.15;
+    sprintf(celsius, "%f", celsiusF);
+    client.publish("sys/temperature", celsius);
     //
 
     int state = sysState.compareTo("true");
@@ -130,9 +131,11 @@ void loop()
         float analogValue = analogRead(photoPin) * (float)1023 / 4095;
         float voltage = analogValue / 1024. * 5;
         float resistance = 2000 * voltage / (1 - voltage / 5);
-        lux = pow(RL10 * 1e3 * pow(10, GAMMA) / resistance, (1 / GAMMA));
-        Serial.println(lux);
-        if (lux <= 100)
+        float luxF = pow(RL10 * 1e3 * pow(10, GAMMA) / resistance, (1 / GAMMA));
+        sprintf(lux, "%f", luxF);
+        client.publish("sys/photo", lux);
+
+        if (luxF <= 100)
         {
             digitalWrite(ledPin0, HIGH);
             digitalWrite(ledPin1, HIGH);
@@ -163,5 +166,6 @@ void loop()
     }
     }
 
-    delay(1000);
+    client.publish("sys/led", ledState);
+    delay(5000);
 }
