@@ -18,3 +18,9 @@ https://lastminuteengineers.com/esp32-pinout-reference/
 // Can't use analogRead with wifi
 https://rntlab.com/question/problem-analogread-while-wifi/
 
+// Cài đặt giao diện đồng hồ
+Đồng hồ kim
+	npm i node-red-contrib-ui-clock
+Đồng hồ số
+	npm i node-red-contrib-ui-digital-clock
+
