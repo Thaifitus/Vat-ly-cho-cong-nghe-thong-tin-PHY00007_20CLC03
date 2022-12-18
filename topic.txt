@@ -4,3 +4,4 @@ sys/x:
 		led: tình trạng đèn (bật/tắt)
 		photo: giá trị ánh sáng (đơn vị lux)
 		sound: giá trị âm thanh
+		state: chế độ của hệ thống (tự động/thủ công)

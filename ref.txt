@@ -15,3 +15,6 @@ https://pianalytix.com/street-light-monitoring-system-using-iot/
 // Board ESP32 của wokwi là loại ESP32 DevKit v1 (link: ý nghĩa và cách sử dụng các pin (chân cắm) của board)
 https://lastminuteengineers.com/esp32-pinout-reference/
 
+// Can't use analogRead with wifi
+https://rntlab.com/question/problem-analogread-while-wifi/
+

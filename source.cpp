@@ -4,11 +4,11 @@
 
 // ========== GLOBAL VARIABLE ==========
 // Giá trị ánh sáng (đơn vị đo: lux - lumen per square metre)
-char lux[2];
+char lux[7];
 // Trạng thái đèn (On/Off), dùng strcpy để gán
 char ledState[4];
 // Nhiệt độ môi trường (độ C)
-char celsius[5];
+char celsius[4];
 // Chế độ hệ thống (true: tự động, false: thủ công)
 String sysState = "true";
 // Photoresistor pin
@@ -111,12 +111,14 @@ void loop()
     // Đo nhiệt độ môi trường bằng cảm biến nhiệt độ
     const float BETA = 3950; // should match the Beta Coefficient of the thermistor
     float analogValue = analogRead(tempPin) * (float)1023 / 4095;
-    float celsiusF = 1 / (log(1 / (1023. / analogValue - 1)) / BETA + 1.0 / 298.15) - 273.15;
-    sprintf(celsius, "%f", celsiusF);
+    int celsiusI = 1 / (log(1 / (1023. / analogValue - 1)) / BETA + 1.0 / 298.15) - 273.15;
+    sprintf(celsius, "%i", celsiusI);
     client.publish("sys/temperature", celsius);
     //
 
+    // Kiểm tra trạng thái của hệ thống (tự động hoặc thủ công)
     int state = sysState.compareTo("true");
+    // Chức năng theo trạng thái hệ thống
     switch (state)
     {
     // Hệ thống chạy tự động
@@ -126,16 +128,15 @@ void loop()
         // These constants should match the photoresistor's "gamma" and "rl10" attributes
         const float GAMMA = 0.7;
         const float RL10 = 50;
-
         // Convert the analog value into lux value:
         float analogValue = analogRead(photoPin) * (float)1023 / 4095;
         float voltage = analogValue / 1024. * 5;
         float resistance = 2000 * voltage / (1 - voltage / 5);
-        float luxF = pow(RL10 * 1e3 * pow(10, GAMMA) / resistance, (1 / GAMMA));
-        sprintf(lux, "%f", luxF);
+        int luxI = pow(RL10 * 1e3 * pow(10, GAMMA) / resistance, (1 / GAMMA));
+        sprintf(lux, "%i", luxI);
         client.publish("sys/photo", lux);
 
-        if (luxF <= 100)
+        if (luxI <= 100)
         {
             digitalWrite(ledPin0, HIGH);
             digitalWrite(ledPin1, HIGH);
@@ -151,7 +152,6 @@ void loop()
             digitalWrite(ledPin3, LOW);
             strcpy(ledState, "Off");
         }
-
         //
         break;
     }
