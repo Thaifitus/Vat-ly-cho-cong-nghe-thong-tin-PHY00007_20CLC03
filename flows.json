@@ -33,7 +33,7 @@
         "type": "ui_text",
         "z": "6ae1903bca2e70b5",
         "group": "6b83820ba5d32f51",
-        "order": 2,
+        "order": 4,
         "width": 0,
         "height": 0,
         "name": "",
@@ -71,7 +71,7 @@
         "type": "ui_text",
         "z": "6ae1903bca2e70b5",
         "group": "6b83820ba5d32f51",
-        "order": 1,
+        "order": 3,
         "width": 0,
         "height": 0,
         "name": "",
@@ -109,7 +109,7 @@
         "type": "ui_text",
         "z": "6ae1903bca2e70b5",
         "group": "6b83820ba5d32f51",
-        "order": 3,
+        "order": 5,
         "width": 0,
         "height": 0,
         "name": "",
@@ -120,6 +120,90 @@
         "x": 400,
         "y": 420,
         "wires": []
+    },
+    {
+        "id": "ed7c06bc045c7bc2",
+        "type": "inject",
+        "z": "6ae1903bca2e70b5",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "0.01",
+        "crontab": "",
+        "once": false,
+        "onceDelay": "0.01",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 170,
+        "y": 560,
+        "wires": [
+            [
+                "bafb97b584f83b3f"
+            ]
+        ]
+    },
+    {
+        "id": "bafb97b584f83b3f",
+        "type": "ui_clock",
+        "z": "6ae1903bca2e70b5",
+        "name": "Đồng hồ kim",
+        "group": "6b83820ba5d32f51",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "x": 390,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "2b3808e3cf79c5f2",
+        "type": "ui_digital_clock",
+        "z": "6ae1903bca2e70b5",
+        "name": "Đồng hồ số",
+        "group": "6b83820ba5d32f51",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "x": 390,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "51f16c715bac07fa",
+        "type": "inject",
+        "z": "6ae1903bca2e70b5",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "0.01",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 170,
+        "y": 620,
+        "wires": [
+            [
+                "2b3808e3cf79c5f2"
+            ]
+        ]
     },
     {
         "id": "cee8dae977ee2b17",
