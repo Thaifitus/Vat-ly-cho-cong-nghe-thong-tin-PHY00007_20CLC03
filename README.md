@@ -7,7 +7,7 @@
 - Xem thông tin của thiết bị INPUT trên website qua Internet. Ví dụ: Giá trị các cảm biến….
 - Điều khiển thiết bị OUTPUT từ website qua Internet.
 - Lưu trữ dữ liệu cảm biến hoặc lịch sử hoạt động của thiết bị lên cloud.
-- Thông báo về điện thoại/email cho người dung trong tình huống khẩn cấp.
+- Thông báo về điện thoại/email cho người dùng trong tình huống khẩn cấp.
 
 LƯU Ý:
 - Mỗi sinh viên trong nhóm bắt buộc phải tham gia một phần công việc liên quan đến lập trình

@@ -6,11 +6,10 @@ Air Pollution Monitoring System
 // Chi tiết về wokwi
 https://forum.arduino.cc/t/virtual-online-arduino-and-esp32-simulator-wokwi-arduino-simulator-features/698481
 
+// Bài tham khảo kỳ trước
+https://drive.google.com/drive/folders/10LdblISnWQlPM10UtmheJipJP2Rae2C4
 // Bài làm tham khảo
 https://www.ripublication.com/aeee/71_pp%20%20%20539-542.pdf
-
-// Link khác
-https://pianalytix.com/street-light-monitoring-system-using-iot/
 
 // Board ESP32 của wokwi là loại ESP32 DevKit v1 (link: ý nghĩa và cách sử dụng các pin (chân cắm) của board)
 https://lastminuteengineers.com/esp32-pinout-reference/
