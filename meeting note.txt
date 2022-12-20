@@ -1,0 +1,12 @@
+13/12/2022
+	Cách làm việc với các file
+	Giải thích chương trình
+	Ghi note cho mỗi node khi đưa vào node red
+	Cường: lấy được các giá trị cho global variable
+	Huân: đề ra topic để gửi nhận
+
+20/12/2022
+	Mạnh Cường demo cloud
+	Thiết kế 3D
+	Chia lại công việc (vì ai cũng phải code mà chỉ có wokwi là phải code)
+	
