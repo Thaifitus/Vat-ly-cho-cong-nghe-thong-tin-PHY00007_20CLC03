@@ -24,7 +24,8 @@
         "y": 140,
         "wires": [
             [
-                "e507c82e9676b275"
+                "e507c82e9676b275",
+                "ba1d03db5c533f40"
             ]
         ]
     },
@@ -58,8 +59,8 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 140,
-        "y": 300,
+        "x": 120,
+        "y": 280,
         "wires": [
             [
                 "300b0098cbefa71b"
@@ -79,8 +80,8 @@
         "format": "{{msg.payload}}",
         "layout": "row-left",
         "className": "",
-        "x": 360,
-        "y": 300,
+        "x": 280,
+        "y": 280,
         "wires": []
     },
     {
@@ -100,7 +101,8 @@
         "y": 420,
         "wires": [
             [
-                "ca63405f03450356"
+                "ca63405f03450356",
+                "e25ebe281386faca"
             ]
         ]
     },
@@ -117,7 +119,7 @@
         "format": "{{msg.payload}}",
         "layout": "row-left",
         "className": "",
-        "x": 400,
+        "x": 460,
         "y": 420,
         "wires": []
     },
@@ -203,6 +205,50 @@
             [
                 "2b3808e3cf79c5f2"
             ]
+        ]
+    },
+    {
+        "id": "ba1d03db5c533f40",
+        "type": "http request",
+        "z": "6ae1903bca2e70b5",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://api.thingspeak.com/update?api_key=A9445H1N3HIV23ES&field1={{payload}}",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 410,
+        "y": 200,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e25ebe281386faca",
+        "type": "http request",
+        "z": "6ae1903bca2e70b5",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://api.thingspeak.com/update?api_key=A9445H1N3HIV23ES&field2={{payload}}",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 410,
+        "y": 320,
+        "wires": [
+            []
         ]
     },
     {
