@@ -1,7 +1,13 @@
 sys/x:
 	x:
 		temperature: nhiệt độ
-		led: tình trạng đèn (bật/tắt)
+		led: tình trạng đèn (bật/tắt) - Node red subcribe, Wokwi publish
+		ledOn: bật/tắt đèn thủ công trên node red - Wokwi subcribe, Node red publish
 		photo: giá trị ánh sáng (đơn vị lux)
 		sound: giá trị âm thanh
 		state: chế độ của hệ thống (tự động/thủ công)
+		notifi: tắt/bật thông báo ifttt
+ifttt/x
+	x:
+		temperature: cảnh báo nhiệt độ cao (>50 độC)
+		led: đèn chuyển trạng thái (bật/tắt)

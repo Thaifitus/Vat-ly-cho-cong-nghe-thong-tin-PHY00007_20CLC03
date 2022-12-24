@@ -1,6 +1,7 @@
 #include <WiFi.h>
 #include <PubSubClient.h>
 #include <string.h>
+#include <string>
 
 // ========== GLOBAL VARIABLE ==========
 // Giá trị ánh sáng (đơn vị đo: lux - lumen per square metre)
@@ -17,6 +18,11 @@ int photoPin = 35;
 int ledPin0 = 12, ledPin1 = 14, ledPin2 = 27, ledPin3 = 26;
 // Temperature sensor pin
 int tempPin = 32;
+// Thông báo về ifttt
+char beNotifi[6]; // Bật/tắt thông báo từ người dùng
+bool notifi = false;
+int notifiType = -1; // Loại thông báo (trạng thái đèn = 0, cảnh báo nhiệt độ = 1)
+
 
 // ========== INTERNET CONNECTION ==========
 const char *ssid = "Wokwi-GUEST";
@@ -49,7 +55,14 @@ void mqttReconnect()
             Serial.println("connected");
 
             //***Subscribe all topic you need***
-            client.subscribe(" ");
+            // Topic chế độ hệ thống (tự động/thủ công)
+            client.subscribe("sys/state");
+
+            // Topic bật/tắt đèn trên website
+            client.subscribe("sys/ledOn");
+            
+            // Topic nhận thông báo từ ifttt
+            client.subscribe("sys/notifi");
         }
         else
         {
@@ -62,7 +75,7 @@ void mqttReconnect()
 // ========== SETUP ==========
 void setup()
 {
-    Serial.begin(115200);
+    Serial.begin(9600);
     Serial.print("Connecting to WiFi");
 
     wifiConnect();
@@ -80,17 +93,81 @@ void setup()
     pinMode(tempPin, INPUT);
 }
 
+// ========== HÀM HỖ TRỢ ==========
+// Hàm bật/tắt hệ thống đèn
+void TurnLed(int status)
+{
+    switch(status)
+    {
+        // Tắt đèn
+        case 0:
+        {
+            digitalWrite(ledPin0, LOW);
+            digitalWrite(ledPin1, LOW);
+            digitalWrite(ledPin2, LOW);
+            digitalWrite(ledPin3, LOW);
+            if(strcmp(ledState, "On") == 0)
+            {
+                notifi = true;
+                notifiType = 0;
+            }
+            strcpy(ledState, "Off");
+            break;
+        }
+        // Bật đèn
+        case 1:
+        {
+            digitalWrite(ledPin0, HIGH);
+            digitalWrite(ledPin1, HIGH);
+            digitalWrite(ledPin2, HIGH);
+            digitalWrite(ledPin3, HIGH);
+            if(strcmp(ledState, "Off") == 0)
+            {
+                notifi = true;
+                notifiType = 0;
+            }
+            strcpy(ledState, "On");
+            break;
+        }
+    }
+    client.publish("sys/led", ledState);
+}
 // MQTT Receiver
 void callback(char *topic, byte *message, unsigned int length)
 {
+    Serial.println("Wokwi received from topic: ");
     Serial.println(topic);
     String strMsg;
     for (int i = 0; i < length; i++)
     {
         strMsg += (char)message[i];
     }
-    // Serial.println(strMsg);
+    Serial.println(strMsg);
+
     //***Insert code here to control other devices***
+    // Trạng thái hệ thống
+    if (strcmp(topic, "sys/state") == 0)
+    {
+        sysState = strMsg;
+    }
+    // Bật/tắt đèn thủ công
+    else if(strcmp(topic, "sys/ledOn") == 0)
+    {
+        // Tắt đèn
+        if (strMsg.compareTo("false") == 0)
+        {
+           TurnLed(0);
+        }
+        // Bật đèn
+        else
+        {
+           TurnLed(1);
+        }
+    }
+    else if(strcmp(topic, "sys/notifi") == 0)
+    {
+        strcpy(beNotifi, strMsg.c_str());
+    }
 }
 
 // ========== LOOP ==========
@@ -114,6 +191,12 @@ void loop()
     int celsiusI = 1 / (log(1 / (1023. / analogValue - 1)) / BETA + 1.0 / 298.15) - 273.15;
     sprintf(celsius, "%i", celsiusI);
     client.publish("sys/temperature", celsius);
+    // Nhiệt độ trên 50C -> thông báo ifttt
+    if(celsiusI > 50)
+    {
+        notifi = true;
+        notifiType = 1;
+    }
     //
 
     // Kiểm tra trạng thái của hệ thống (tự động hoặc thủ công)
@@ -138,19 +221,11 @@ void loop()
 
         if (luxI <= 100)
         {
-            digitalWrite(ledPin0, HIGH);
-            digitalWrite(ledPin1, HIGH);
-            digitalWrite(ledPin2, HIGH);
-            digitalWrite(ledPin3, HIGH);
-            strcpy(ledState, "On");
+            TurnLed(1);
         }
         else
         {
-            digitalWrite(ledPin0, LOW);
-            digitalWrite(ledPin1, LOW);
-            digitalWrite(ledPin2, LOW);
-            digitalWrite(ledPin3, LOW);
-            strcpy(ledState, "Off");
+            TurnLed(0);
         }
         //
         break;
@@ -166,6 +241,27 @@ void loop()
     }
     }
 
-    client.publish("sys/led", ledState);
+    // Thông báo ifttt
+    if(notifi == true && strcmp(beNotifi, "true") == 0)
+    {
+        switch(notifiType)
+        {
+            // Thông báo tình trạng đèn
+            case 0:
+            {
+                client.publish("ifttt/led", ledState);
+                break;
+            }
+            // Cảnh báo nhiệt độ
+            case 1:
+            {
+                client.publish("ifttt/temperature", celsius);
+                break;
+            }
+        }
+        // Đã thông báo ifttt
+        notifi = false;
+        notifiType = -1;
+    }
     delay(5000);
 }

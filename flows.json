@@ -1,6 +1,6 @@
 [
     {
-        "id": "6ae1903bca2e70b5",
+        "id": "25468b318c45aab3",
         "type": "tab",
         "label": "ĐỒ ÁN CUỐI KỲ",
         "disabled": false,
@@ -8,9 +8,9 @@
         "env": []
     },
     {
-        "id": "4dbcad16f3c1fbc1",
+        "id": "ebc1119edc797041",
         "type": "mqtt in",
-        "z": "6ae1903bca2e70b5",
+        "z": "25468b318c45aab3",
         "name": "",
         "topic": "sys/led",
         "qos": "2",
@@ -20,19 +20,18 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 130,
-        "y": 140,
+        "x": 110,
+        "y": 180,
         "wires": [
             [
-                "e507c82e9676b275",
-                "ba1d03db5c533f40"
+                "318f7348d1c6b2ad"
             ]
         ]
     },
     {
-        "id": "e507c82e9676b275",
+        "id": "318f7348d1c6b2ad",
         "type": "ui_text",
-        "z": "6ae1903bca2e70b5",
+        "z": "25468b318c45aab3",
         "group": "6b83820ba5d32f51",
         "order": 4,
         "width": 0,
@@ -43,13 +42,13 @@
         "layout": "row-left",
         "className": "",
         "x": 360,
-        "y": 140,
+        "y": 180,
         "wires": []
     },
     {
-        "id": "5b585ed2a44094f8",
+        "id": "1238f9ce16fe3178",
         "type": "mqtt in",
-        "z": "6ae1903bca2e70b5",
+        "z": "25468b318c45aab3",
         "name": "",
         "topic": "sys/photo",
         "qos": "2",
@@ -60,17 +59,17 @@
         "rh": 0,
         "inputs": 0,
         "x": 120,
-        "y": 280,
+        "y": 240,
         "wires": [
             [
-                "300b0098cbefa71b"
+                "3e5d01ddb1533557"
             ]
         ]
     },
     {
-        "id": "300b0098cbefa71b",
+        "id": "3e5d01ddb1533557",
         "type": "ui_text",
-        "z": "6ae1903bca2e70b5",
+        "z": "25468b318c45aab3",
         "group": "6b83820ba5d32f51",
         "order": 3,
         "width": 0,
@@ -80,14 +79,14 @@
         "format": "{{msg.payload}}",
         "layout": "row-left",
         "className": "",
-        "x": 280,
-        "y": 280,
+        "x": 360,
+        "y": 240,
         "wires": []
     },
     {
-        "id": "144eddad8f643ce6",
+        "id": "abf78e3c865564ee",
         "type": "mqtt in",
-        "z": "6ae1903bca2e70b5",
+        "z": "25468b318c45aab3",
         "name": "",
         "topic": "sys/temperature",
         "qos": "2",
@@ -97,36 +96,35 @@
         "rap": true,
         "rh": 0,
         "inputs": 0,
-        "x": 160,
-        "y": 420,
+        "x": 140,
+        "y": 300,
         "wires": [
             [
-                "ca63405f03450356",
-                "e25ebe281386faca"
+                "fc8e8aac0e5b8856"
             ]
         ]
     },
     {
-        "id": "ca63405f03450356",
+        "id": "fc8e8aac0e5b8856",
         "type": "ui_text",
-        "z": "6ae1903bca2e70b5",
+        "z": "25468b318c45aab3",
         "group": "6b83820ba5d32f51",
         "order": 5,
         "width": 0,
         "height": 0,
         "name": "",
-        "label": "Nhiệt độ môi trường( độ C ): ",
+        "label": "Nhiệt độ môi trường (độ C): ",
         "format": "{{msg.payload}}",
         "layout": "row-left",
         "className": "",
-        "x": 460,
-        "y": 420,
+        "x": 400,
+        "y": 300,
         "wires": []
     },
     {
-        "id": "ed7c06bc045c7bc2",
+        "id": "66cce5d21e81e298",
         "type": "inject",
-        "z": "6ae1903bca2e70b5",
+        "z": "25468b318c45aab3",
         "name": "",
         "props": [
             {
@@ -144,44 +142,44 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 170,
-        "y": 560,
+        "x": 150,
+        "y": 500,
         "wires": [
             [
-                "bafb97b584f83b3f"
+                "4f0f2746fde2f499"
             ]
         ]
     },
     {
-        "id": "bafb97b584f83b3f",
+        "id": "4f0f2746fde2f499",
         "type": "ui_clock",
-        "z": "6ae1903bca2e70b5",
+        "z": "25468b318c45aab3",
         "name": "Đồng hồ kim",
         "group": "6b83820ba5d32f51",
         "order": 1,
         "width": 0,
         "height": 0,
-        "x": 390,
-        "y": 560,
+        "x": 370,
+        "y": 500,
         "wires": []
     },
     {
-        "id": "2b3808e3cf79c5f2",
+        "id": "899a30aaf5cebbdd",
         "type": "ui_digital_clock",
-        "z": "6ae1903bca2e70b5",
+        "z": "25468b318c45aab3",
         "name": "Đồng hồ số",
         "group": "6b83820ba5d32f51",
         "order": 2,
         "width": 0,
         "height": 0,
-        "x": 390,
-        "y": 620,
+        "x": 370,
+        "y": 540,
         "wires": []
     },
     {
-        "id": "51f16c715bac07fa",
+        "id": "b09f98ed2391fb6d",
         "type": "inject",
-        "z": "6ae1903bca2e70b5",
+        "z": "25468b318c45aab3",
         "name": "",
         "props": [
             {
@@ -199,18 +197,18 @@
         "topic": "",
         "payload": "",
         "payloadType": "date",
-        "x": 170,
-        "y": 620,
+        "x": 150,
+        "y": 540,
         "wires": [
             [
-                "2b3808e3cf79c5f2"
+                "899a30aaf5cebbdd"
             ]
         ]
     },
     {
-        "id": "ba1d03db5c533f40",
+        "id": "9a2917ad77ab1111",
         "type": "http request",
-        "z": "6ae1903bca2e70b5",
+        "z": "25468b318c45aab3",
         "name": "",
         "method": "GET",
         "ret": "txt",
@@ -223,16 +221,16 @@
         "authType": "",
         "senderr": false,
         "headers": [],
-        "x": 410,
-        "y": 200,
+        "x": 130,
+        "y": 680,
         "wires": [
             []
         ]
     },
     {
-        "id": "e25ebe281386faca",
+        "id": "e934b588439afa5e",
         "type": "http request",
-        "z": "6ae1903bca2e70b5",
+        "z": "25468b318c45aab3",
         "name": "",
         "method": "GET",
         "ret": "txt",
@@ -245,11 +243,326 @@
         "authType": "",
         "senderr": false,
         "headers": [],
-        "x": 410,
-        "y": 320,
+        "x": 130,
+        "y": 720,
         "wires": [
             []
         ]
+    },
+    {
+        "id": "9a0621cb4a59487f",
+        "type": "ui_switch",
+        "z": "25468b318c45aab3",
+        "name": "",
+        "label": "Tự động",
+        "tooltip": "",
+        "group": "0ad979918f759bad",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "topic",
+        "topicType": "msg",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "",
+        "animate": false,
+        "className": "",
+        "x": 800,
+        "y": 160,
+        "wires": [
+            [
+                "03329b03f89c83c1"
+            ]
+        ],
+        "info": "Tùy chỉnh chế độ của hệ thống đèn (tự động/thủ công)\r\n"
+    },
+    {
+        "id": "03329b03f89c83c1",
+        "type": "mqtt out",
+        "z": "25468b318c45aab3",
+        "name": "",
+        "topic": "sys/state",
+        "qos": "2",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "a9c0f7eb7370ab01",
+        "x": 1000,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "0fd6b9cf65c2369c",
+        "type": "ui_switch",
+        "z": "25468b318c45aab3",
+        "name": "",
+        "label": "Bật đèn",
+        "tooltip": "",
+        "group": "0ad979918f759bad",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "topic",
+        "topicType": "msg",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "",
+        "animate": false,
+        "className": "",
+        "x": 800,
+        "y": 220,
+        "wires": [
+            [
+                "6745de678225294a"
+            ]
+        ],
+        "info": "Bật đèn thủ công (dùng nút bấm trên node red UI)"
+    },
+    {
+        "id": "6745de678225294a",
+        "type": "mqtt out",
+        "z": "25468b318c45aab3",
+        "name": "",
+        "topic": "sys/ledOn",
+        "qos": "2",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "a9c0f7eb7370ab01",
+        "x": 980,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "6a19b4cd3608876c",
+        "type": "http request",
+        "z": "25468b318c45aab3",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://maker.ifttt.com/trigger/ledState/with/key/d9YG7N74J1vfpesMf4KBy?value1={{payload}}",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 990,
+        "y": 500,
+        "wires": [
+            []
+        ],
+        "info": "Thông báo trạng thái đèn đến người dùng"
+    },
+    {
+        "id": "01c7fbd174e7e6ea",
+        "type": "comment",
+        "z": "25468b318c45aab3",
+        "name": "",
+        "info": "Thông báo dữ liệu từ hệ thống",
+        "x": 800,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "d3f6ea4b119d3de7",
+        "type": "mqtt in",
+        "z": "25468b318c45aab3",
+        "name": "",
+        "topic": "ifttt/led",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "a9c0f7eb7370ab01",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 790,
+        "y": 500,
+        "wires": [
+            [
+                "6a19b4cd3608876c",
+                "667288b97ba1ffc7"
+            ]
+        ],
+        "info": "Nhận thông báo ifttt từ wokwi"
+    },
+    {
+        "id": "068ce9a9a216cf71",
+        "type": "mqtt in",
+        "z": "25468b318c45aab3",
+        "name": "",
+        "topic": "ifttt/temperature",
+        "qos": "2",
+        "datatype": "auto-detect",
+        "broker": "a9c0f7eb7370ab01",
+        "nl": false,
+        "rap": true,
+        "rh": 0,
+        "inputs": 0,
+        "x": 820,
+        "y": 620,
+        "wires": [
+            [
+                "27fff6f1ab1aec24"
+            ]
+        ],
+        "info": "Nhận cảnh báo nhiệt độ ifttt từ wokwi"
+    },
+    {
+        "id": "27fff6f1ab1aec24",
+        "type": "http request",
+        "z": "25468b318c45aab3",
+        "name": "",
+        "method": "GET",
+        "ret": "txt",
+        "paytoqs": "ignore",
+        "url": "https://maker.ifttt.com/trigger/temperature/with/key/d9YG7N74J1vfpesMf4KBy?value1={{payload}}",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 1030,
+        "y": 620,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "667288b97ba1ffc7",
+        "type": "debug",
+        "z": "25468b318c45aab3",
+        "name": "debug 6",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 980,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "c79995509cde48c5",
+        "type": "ui_switch",
+        "z": "25468b318c45aab3",
+        "name": "",
+        "label": "Thông báo từ IFTTT",
+        "tooltip": "",
+        "group": "0ad979918f759bad",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "topic",
+        "topicType": "msg",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "",
+        "animate": false,
+        "className": "",
+        "x": 840,
+        "y": 280,
+        "wires": [
+            [
+                "29416a7510021b20"
+            ]
+        ]
+    },
+    {
+        "id": "29416a7510021b20",
+        "type": "mqtt out",
+        "z": "25468b318c45aab3",
+        "name": "",
+        "topic": "sys/notifi",
+        "qos": "2",
+        "retain": "",
+        "respTopic": "",
+        "contentType": "",
+        "userProps": "",
+        "correl": "",
+        "expiry": "",
+        "broker": "a9c0f7eb7370ab01",
+        "x": 1040,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "9fedfda3298338af",
+        "type": "comment",
+        "z": "25468b318c45aab3",
+        "name": "",
+        "info": "Hiển thị thời gian thực lên UI",
+        "x": 120,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "052908bbe550ca80",
+        "type": "comment",
+        "z": "25468b318c45aab3",
+        "name": "",
+        "info": "Hiển thị dữ liệu từ Wokwi lên UI",
+        "x": 120,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "6564d43a8c88a5c5",
+        "type": "comment",
+        "z": "25468b318c45aab3",
+        "name": "",
+        "info": "Điều khiển hệ thống bằng UI",
+        "x": 800,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "57a4d021fa07f52b",
+        "type": "comment",
+        "z": "25468b318c45aab3",
+        "name": "",
+        "info": "Các node đang xem xét",
+        "x": 120,
+        "y": 640,
+        "wires": []
     },
     {
         "id": "cee8dae977ee2b17",
@@ -281,18 +594,56 @@
     {
         "id": "6b83820ba5d32f51",
         "type": "ui_group",
-        "name": "Project - IOT",
-        "tab": "a17c19b356e00363",
-        "order": 3,
+        "name": "IOT_project",
+        "tab": "e6086867a1fb966c",
+        "order": 1,
         "disp": true,
         "width": "6",
         "collapse": false,
         "className": ""
     },
     {
-        "id": "a17c19b356e00363",
+        "id": "0ad979918f759bad",
+        "type": "ui_group",
+        "name": "Chế độ hệ thống",
+        "tab": "e6086867a1fb966c",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false,
+        "className": ""
+    },
+    {
+        "id": "a9c0f7eb7370ab01",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "broker.hivemq.com",
+        "port": "1883",
+        "clientid": "",
+        "autoConnect": true,
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "userProps": "",
+        "sessionExpiry": ""
+    },
+    {
+        "id": "e6086867a1fb966c",
         "type": "ui_tab",
-        "name": "Home",
+        "name": "Home_IOT final report",
         "icon": "dashboard",
         "disabled": false,
         "hidden": false
