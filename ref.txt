@@ -23,3 +23,6 @@ https://rntlab.com/question/problem-analogread-while-wifi/
 Đồng hồ số
 	npm i node-red-contrib-ui-digital-clock
 
+// Msg.payload in http request (truyền phần tử của array để lưu trữ lên Thingspeak)
+https://discourse.nodered.org/t/msg-payload-in-http-request/24151
+
