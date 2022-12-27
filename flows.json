@@ -15,7 +15,7 @@
         "topic": "sys/led",
         "qos": "2",
         "datatype": "auto-detect",
-        "broker": "cee8dae977ee2b17",
+        "broker": "a9c0f7eb7370ab01",
         "nl": false,
         "rap": true,
         "rh": 0,
@@ -53,7 +53,7 @@
         "topic": "sys/photo",
         "qos": "2",
         "datatype": "auto-detect",
-        "broker": "cee8dae977ee2b17",
+        "broker": "a9c0f7eb7370ab01",
         "nl": false,
         "rap": true,
         "rh": 0,
@@ -91,7 +91,7 @@
         "topic": "sys/temperature",
         "qos": "2",
         "datatype": "auto-detect",
-        "broker": "cee8dae977ee2b17",
+        "broker": "a9c0f7eb7370ab01",
         "nl": false,
         "rap": true,
         "rh": 0,
@@ -206,41 +206,6 @@
         ]
     },
     {
-        "id": "9a0621cb4a59487f",
-        "type": "ui_switch",
-        "z": "25468b318c45aab3",
-        "name": "",
-        "label": "Tự động",
-        "tooltip": "",
-        "group": "0ad979918f759bad",
-        "order": 5,
-        "width": 0,
-        "height": 0,
-        "passthru": true,
-        "decouple": "false",
-        "topic": "topic",
-        "topicType": "msg",
-        "style": "",
-        "onvalue": "true",
-        "onvalueType": "bool",
-        "onicon": "",
-        "oncolor": "",
-        "offvalue": "false",
-        "offvalueType": "bool",
-        "officon": "",
-        "offcolor": "",
-        "animate": false,
-        "className": "",
-        "x": 940,
-        "y": 160,
-        "wires": [
-            [
-                "03329b03f89c83c1"
-            ]
-        ],
-        "info": "Tùy chỉnh chế độ của hệ thống đèn (tự động/thủ công)\r\n"
-    },
-    {
         "id": "03329b03f89c83c1",
         "type": "mqtt out",
         "z": "25468b318c45aab3",
@@ -254,7 +219,7 @@
         "correl": "",
         "expiry": "",
         "broker": "a9c0f7eb7370ab01",
-        "x": 1140,
+        "x": 1220,
         "y": 160,
         "wires": []
     },
@@ -307,7 +272,7 @@
         "correl": "",
         "expiry": "",
         "broker": "a9c0f7eb7370ab01",
-        "x": 1120,
+        "x": 1140,
         "y": 220,
         "wires": []
     },
@@ -555,9 +520,52 @@
         ]
     },
     {
-        "id": "cee8dae977ee2b17",
+        "id": "a932746dee14e996",
+        "type": "ui_dropdown",
+        "z": "25468b318c45aab3",
+        "name": "",
+        "label": "Chức năng",
+        "tooltip": "",
+        "place": "Lựa chọn",
+        "group": "0ad979918f759bad",
+        "order": 3,
+        "width": "6",
+        "height": "2",
+        "passthru": true,
+        "multiple": false,
+        "options": [
+            {
+                "label": "Ánh sáng",
+                "value": "photoresistor",
+                "type": "str"
+            },
+            {
+                "label": "Chuyển động",
+                "value": "PIR",
+                "type": "str"
+            },
+            {
+                "label": "Thủ công",
+                "value": "manual",
+                "type": "str"
+            }
+        ],
+        "payload": "",
+        "topic": "topic",
+        "topicType": "msg",
+        "className": "",
+        "x": 950,
+        "y": 160,
+        "wires": [
+            [
+                "03329b03f89c83c1"
+            ]
+        ]
+    },
+    {
+        "id": "a9c0f7eb7370ab01",
         "type": "mqtt-broker",
-        "name": "server",
+        "name": "",
         "broker": "broker.hivemq.com",
         "port": "1883",
         "clientid": "",
@@ -602,33 +610,6 @@
         "width": "6",
         "collapse": false,
         "className": ""
-    },
-    {
-        "id": "a9c0f7eb7370ab01",
-        "type": "mqtt-broker",
-        "name": "",
-        "broker": "broker.hivemq.com",
-        "port": "1883",
-        "clientid": "",
-        "autoConnect": true,
-        "usetls": false,
-        "protocolVersion": "4",
-        "keepalive": "60",
-        "cleansession": true,
-        "birthTopic": "",
-        "birthQos": "0",
-        "birthPayload": "",
-        "birthMsg": {},
-        "closeTopic": "",
-        "closeQos": "0",
-        "closePayload": "",
-        "closeMsg": {},
-        "willTopic": "",
-        "willQos": "0",
-        "willPayload": "",
-        "willMsg": {},
-        "userProps": "",
-        "sessionExpiry": ""
     },
     {
         "id": "e6086867a1fb966c",

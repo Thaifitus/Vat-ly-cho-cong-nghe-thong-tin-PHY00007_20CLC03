@@ -5,7 +5,7 @@ sys/x:
 		ledOn: bật/tắt đèn thủ công trên node red - Wokwi subcribe, Node red publish
 		photo: giá trị ánh sáng (đơn vị lux)
 		sound: giá trị âm thanh
-		state: chế độ của hệ thống (tự động/thủ công)
+		state: chế độ của hệ thống (tự động dựa trên cường độ ánh sáng; tự động dựa trên cảm biến PIR; bật tắt thủ công bằng UI)
 		notifi: tắt/bật thông báo ifttt
 ifttt/x
 	x:

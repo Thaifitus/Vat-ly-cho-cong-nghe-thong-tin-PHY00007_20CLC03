@@ -5,13 +5,13 @@
 
 // ========== GLOBAL VARIABLE ==========
 // Giá trị ánh sáng (đơn vị đo: lux - lumen per square metre)
-char lux[7];
+char lux[7] = "0";
 // Trạng thái đèn (On/Off), dùng strcpy để gán
-char ledState[4];
+char ledState[4] = "Off";
 // Nhiệt độ môi trường (độ C)
-char celsius[4];
-// Chế độ hệ thống (true: tự động, false: thủ công)
-String sysState = "true";
+char celsius[4] = "0";
+// Chế độ hệ thống (photoresistor: tự động dựa trên cường độ ánh sáng; PIR: tự động dựa trên cảm biến PIR; manual: bật/tắt thủ công bằng UI)
+String sysState = "";
 // Photoresistor pin
 int photoPin = 35;
 // Leds pin
@@ -22,7 +22,7 @@ int tempPin = 32;
 int pirPin = 33;
 int pirState = LOW; // mặc định lúc chưa khởi động
 // Thông báo về ifttt
-char beNotifi[6]; // Bật/tắt thông báo từ người dùng
+char beNotifi[6] = "false"; // Bật/tắt thông báo từ người dùng
 bool notifi = false;
 int notifiType = -1; // Loại thông báo (trạng thái đèn = 0, cảnh báo nhiệt độ = 1)
 
@@ -203,15 +203,11 @@ void loop()
     }
     //
 
-    // Kiểm tra trạng thái của hệ thống (tự động hoặc thủ công)
-    int state = sysState.compareTo("true");
-    // Chức năng theo trạng thái hệ thống
-    switch (state)
+    /* CHỨC NĂNG CỦA HỆ THỐNG */
+    // Hệ thống hoạt động dựa trên cường độ ánh sáng
+    if (sysState.compareTo("photoresistor") == 0)
     {
-    // Hệ thống chạy tự động
-    case 0:
-    {
-        // Bật/tắt đèn tự động
+        // Đo cường độ ánh sáng bằng cảm biến ánh sáng
         // These constants should match the photoresistor's "gamma" and "rl10" attributes
         const float GAMMA = 0.7;
         const float RL10 = 50;
@@ -223,6 +219,7 @@ void loop()
         sprintf(lux, "%i", luxI);
         client.publish("sys/photo", lux);
 
+        // Bật/tắt đèn
         if (luxI <= 100)
         {
             TurnLed(1);
@@ -231,12 +228,9 @@ void loop()
         {
             TurnLed(0);
         }
-        //
-        break;
     }
-
-    // Hệ thống chạy thủ công
-    default:
+    // Hệ thống hoạt động dựa trên cảm biến chuyển động
+    else if (sysState.compareTo("PIR") == 0)
     {
         // Bật/tắt đèn bằng cảm biến chuyển động
         int val = digitalRead(pirPin);
@@ -262,10 +256,13 @@ void loop()
                 pirState = LOW;
             }
         }
-        break;
     }
-    }
+    // Hệ thống hoạt động thủ công
+    else
+    {
 
+    }
+    
     // Thông báo ifttt
     if (notifi == true && strcmp(beNotifi, "true") == 0)
     {
