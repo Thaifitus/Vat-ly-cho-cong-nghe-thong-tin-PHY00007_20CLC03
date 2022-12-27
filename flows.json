@@ -1,6 +1,6 @@
 [
     {
-        "id": "25468b318c45aab3",
+        "id": "de30d2341968d3c3",
         "type": "tab",
         "label": "ĐỒ ÁN CUỐI KỲ",
         "disabled": false,
@@ -8,9 +8,9 @@
         "env": []
     },
     {
-        "id": "ebc1119edc797041",
+        "id": "bd4cde2a3c6cfe68",
         "type": "mqtt in",
-        "z": "25468b318c45aab3",
+        "z": "de30d2341968d3c3",
         "name": "",
         "topic": "sys/led",
         "qos": "2",
@@ -24,16 +24,16 @@
         "y": 180,
         "wires": [
             [
-                "318f7348d1c6b2ad"
+                "d74c170f1ca36a85"
             ]
         ]
     },
     {
-        "id": "318f7348d1c6b2ad",
+        "id": "d74c170f1ca36a85",
         "type": "ui_text",
-        "z": "25468b318c45aab3",
-        "group": "6b83820ba5d32f51",
-        "order": 4,
+        "z": "de30d2341968d3c3",
+        "group": "6ba3fae66bb96083",
+        "order": 5,
         "width": 0,
         "height": 0,
         "name": "",
@@ -46,9 +46,9 @@
         "wires": []
     },
     {
-        "id": "1238f9ce16fe3178",
+        "id": "16c51c4aefdc1d55",
         "type": "mqtt in",
-        "z": "25468b318c45aab3",
+        "z": "de30d2341968d3c3",
         "name": "",
         "topic": "sys/photo",
         "qos": "2",
@@ -62,16 +62,16 @@
         "y": 240,
         "wires": [
             [
-                "3e5d01ddb1533557"
+                "064267b4e50640c8"
             ]
         ]
     },
     {
-        "id": "3e5d01ddb1533557",
+        "id": "064267b4e50640c8",
         "type": "ui_text",
-        "z": "25468b318c45aab3",
-        "group": "6b83820ba5d32f51",
-        "order": 3,
+        "z": "de30d2341968d3c3",
+        "group": "6ba3fae66bb96083",
+        "order": 4,
         "width": 0,
         "height": 0,
         "name": "",
@@ -84,9 +84,9 @@
         "wires": []
     },
     {
-        "id": "abf78e3c865564ee",
+        "id": "4fe567e8d3d8d3fb",
         "type": "mqtt in",
-        "z": "25468b318c45aab3",
+        "z": "de30d2341968d3c3",
         "name": "",
         "topic": "sys/temperature",
         "qos": "2",
@@ -100,16 +100,16 @@
         "y": 300,
         "wires": [
             [
-                "18891f3e12515497"
+                "cf8a26da69e788d1"
             ]
         ]
     },
     {
-        "id": "fc8e8aac0e5b8856",
+        "id": "26cd9f3f435c662a",
         "type": "ui_text",
-        "z": "25468b318c45aab3",
-        "group": "6b83820ba5d32f51",
-        "order": 5,
+        "z": "de30d2341968d3c3",
+        "group": "6ba3fae66bb96083",
+        "order": 6,
         "width": 0,
         "height": 0,
         "name": "",
@@ -122,9 +122,9 @@
         "wires": []
     },
     {
-        "id": "66cce5d21e81e298",
+        "id": "a9a0dcf5e1bd59f3",
         "type": "inject",
-        "z": "25468b318c45aab3",
+        "z": "de30d2341968d3c3",
         "name": "",
         "props": [
             {
@@ -146,16 +146,16 @@
         "y": 500,
         "wires": [
             [
-                "4f0f2746fde2f499"
+                "b902d98eb6081957"
             ]
         ]
     },
     {
-        "id": "4f0f2746fde2f499",
+        "id": "b902d98eb6081957",
         "type": "ui_clock",
-        "z": "25468b318c45aab3",
+        "z": "de30d2341968d3c3",
         "name": "Đồng hồ kim",
-        "group": "6b83820ba5d32f51",
+        "group": "6ba3fae66bb96083",
         "order": 1,
         "width": 0,
         "height": 0,
@@ -164,12 +164,12 @@
         "wires": []
     },
     {
-        "id": "899a30aaf5cebbdd",
+        "id": "d435ea271bf90225",
         "type": "ui_digital_clock",
-        "z": "25468b318c45aab3",
+        "z": "de30d2341968d3c3",
         "name": "Đồng hồ số",
-        "group": "6b83820ba5d32f51",
-        "order": 2,
+        "group": "6ba3fae66bb96083",
+        "order": 3,
         "width": 0,
         "height": 0,
         "x": 370,
@@ -177,9 +177,9 @@
         "wires": []
     },
     {
-        "id": "b09f98ed2391fb6d",
+        "id": "e9df73cb94d98a58",
         "type": "inject",
-        "z": "25468b318c45aab3",
+        "z": "de30d2341968d3c3",
         "name": "",
         "props": [
             {
@@ -201,14 +201,14 @@
         "y": 540,
         "wires": [
             [
-                "899a30aaf5cebbdd"
+                "d435ea271bf90225"
             ]
         ]
     },
     {
-        "id": "03329b03f89c83c1",
+        "id": "033dc0ce7db456e3",
         "type": "mqtt out",
-        "z": "25468b318c45aab3",
+        "z": "de30d2341968d3c3",
         "name": "",
         "topic": "sys/state",
         "qos": "2",
@@ -224,13 +224,13 @@
         "wires": []
     },
     {
-        "id": "0fd6b9cf65c2369c",
+        "id": "40e09a88f32113ce",
         "type": "ui_switch",
-        "z": "25468b318c45aab3",
+        "z": "de30d2341968d3c3",
         "name": "",
         "label": "Bật đèn",
         "tooltip": "",
-        "group": "0ad979918f759bad",
+        "group": "307cea03277ce136",
         "order": 1,
         "width": 0,
         "height": 0,
@@ -253,15 +253,15 @@
         "y": 220,
         "wires": [
             [
-                "6745de678225294a"
+                "260235ea5db0cf8a"
             ]
         ],
         "info": "Bật đèn thủ công (dùng nút bấm trên node red UI)"
     },
     {
-        "id": "6745de678225294a",
+        "id": "260235ea5db0cf8a",
         "type": "mqtt out",
-        "z": "25468b318c45aab3",
+        "z": "de30d2341968d3c3",
         "name": "",
         "topic": "sys/ledOn",
         "qos": "2",
@@ -277,9 +277,9 @@
         "wires": []
     },
     {
-        "id": "6a19b4cd3608876c",
+        "id": "1bdf24899788f1d9",
         "type": "http request",
-        "z": "25468b318c45aab3",
+        "z": "de30d2341968d3c3",
         "name": "http request IFTTT",
         "method": "GET",
         "ret": "txt",
@@ -300,9 +300,9 @@
         "info": "Thông báo trạng thái đèn đến người dùng"
     },
     {
-        "id": "01c7fbd174e7e6ea",
+        "id": "565b65a7ab871418",
         "type": "comment",
-        "z": "25468b318c45aab3",
+        "z": "de30d2341968d3c3",
         "name": "",
         "info": "Thông báo đến người dùng bằng IFTTT và lưu trữ dữ liệu lên cloud",
         "x": 700,
@@ -310,9 +310,9 @@
         "wires": []
     },
     {
-        "id": "d3f6ea4b119d3de7",
+        "id": "0aefd5f3e4525787",
         "type": "mqtt in",
-        "z": "25468b318c45aab3",
+        "z": "de30d2341968d3c3",
         "name": "",
         "topic": "ifttt/led",
         "qos": "2",
@@ -326,16 +326,16 @@
         "y": 500,
         "wires": [
             [
-                "6a19b4cd3608876c",
-                "60705699b145105a"
+                "1bdf24899788f1d9",
+                "1106a71940c60b5f"
             ]
         ],
         "info": "Nhận thông báo ifttt từ wokwi"
     },
     {
-        "id": "068ce9a9a216cf71",
+        "id": "fd40fc6c3da2d925",
         "type": "mqtt in",
-        "z": "25468b318c45aab3",
+        "z": "de30d2341968d3c3",
         "name": "",
         "topic": "ifttt/temperature",
         "qos": "2",
@@ -349,15 +349,15 @@
         "y": 680,
         "wires": [
             [
-                "27fff6f1ab1aec24"
+                "3a3181741dc849d0"
             ]
         ],
         "info": "Nhận cảnh báo nhiệt độ ifttt từ wokwi"
     },
     {
-        "id": "27fff6f1ab1aec24",
+        "id": "3a3181741dc849d0",
         "type": "http request",
-        "z": "25468b318c45aab3",
+        "z": "de30d2341968d3c3",
         "name": "",
         "method": "GET",
         "ret": "txt",
@@ -377,13 +377,13 @@
         ]
     },
     {
-        "id": "c79995509cde48c5",
+        "id": "b5cf71d3bbcaf2ca",
         "type": "ui_switch",
-        "z": "25468b318c45aab3",
+        "z": "de30d2341968d3c3",
         "name": "",
         "label": "Thông báo từ IFTTT",
         "tooltip": "",
-        "group": "0ad979918f759bad",
+        "group": "307cea03277ce136",
         "order": 2,
         "width": 0,
         "height": 0,
@@ -406,14 +406,14 @@
         "y": 280,
         "wires": [
             [
-                "29416a7510021b20"
+                "91c06ac715119676"
             ]
         ]
     },
     {
-        "id": "29416a7510021b20",
+        "id": "91c06ac715119676",
         "type": "mqtt out",
-        "z": "25468b318c45aab3",
+        "z": "de30d2341968d3c3",
         "name": "",
         "topic": "sys/notifi",
         "qos": "2",
@@ -429,9 +429,9 @@
         "wires": []
     },
     {
-        "id": "9fedfda3298338af",
+        "id": "5621be9f355c02b8",
         "type": "comment",
-        "z": "25468b318c45aab3",
+        "z": "de30d2341968d3c3",
         "name": "",
         "info": "Hiển thị thời gian thực lên UI",
         "x": 120,
@@ -439,9 +439,9 @@
         "wires": []
     },
     {
-        "id": "052908bbe550ca80",
+        "id": "7a6db8ab3f045f84",
         "type": "comment",
-        "z": "25468b318c45aab3",
+        "z": "de30d2341968d3c3",
         "name": "",
         "info": "Hiển thị dữ liệu từ Wokwi lên UI",
         "x": 120,
@@ -449,9 +449,9 @@
         "wires": []
     },
     {
-        "id": "6564d43a8c88a5c5",
+        "id": "c978b38fbcdda12b",
         "type": "comment",
-        "z": "25468b318c45aab3",
+        "z": "de30d2341968d3c3",
         "name": "",
         "info": "Điều khiển hệ thống bằng UI",
         "x": 940,
@@ -459,9 +459,9 @@
         "wires": []
     },
     {
-        "id": "18891f3e12515497",
+        "id": "cf8a26da69e788d1",
         "type": "function",
-        "z": "25468b318c45aab3",
+        "z": "de30d2341968d3c3",
         "name": "Lưu trữ nhiệt độ (flow set)",
         "func": "flow.set(\"temperature\", msg.payload);\nreturn msg;",
         "outputs": 1,
@@ -473,15 +473,15 @@
         "y": 300,
         "wires": [
             [
-                "fc8e8aac0e5b8856"
+                "26cd9f3f435c662a"
             ]
         ],
         "info": "Lưu trữ nhiệt độ vào biến temperature (dùng flow.set(\"temperature\"), msg.payload) để lưu trữ lên cloud trong trường hợp cần thiết"
     },
     {
-        "id": "259b044bab9cedd8",
+        "id": "62edaf95f39ef7b6",
         "type": "http request",
-        "z": "25468b318c45aab3",
+        "z": "de30d2341968d3c3",
         "name": "http request cloud (ledState, temperature)",
         "method": "GET",
         "ret": "txt",
@@ -501,9 +501,9 @@
         ]
     },
     {
-        "id": "60705699b145105a",
+        "id": "1106a71940c60b5f",
         "type": "function",
-        "z": "25468b318c45aab3",
+        "z": "de30d2341968d3c3",
         "name": "Nhận dữ liệu và đưa vào URL",
         "func": "const data = [];\nif(msg.payload == \"On\")\n{\n    data.push(1);\n}\nelse if(msg.payload ==\"Off\")\n{\n    data.push(0);\n}\ndata.push(flow.get(\"temperature\"));\n\n\n// URL for http request GET; data[0]=ledState, data[1]=temperature\nmsg.url = \"https://api.thingspeak.com/update?api_key=9YEVZ1MEMPYA8AJ2&field1=\" + data[0] + \"&field2=\" + data[1]\n\nreturn msg;",
         "outputs": 1,
@@ -515,22 +515,22 @@
         "y": 600,
         "wires": [
             [
-                "259b044bab9cedd8"
+                "62edaf95f39ef7b6"
             ]
         ]
     },
     {
-        "id": "a932746dee14e996",
+        "id": "a4bb6f98b112ba1e",
         "type": "ui_dropdown",
-        "z": "25468b318c45aab3",
+        "z": "de30d2341968d3c3",
         "name": "",
         "label": "Chức năng",
         "tooltip": "",
         "place": "Lựa chọn",
-        "group": "0ad979918f759bad",
+        "group": "307cea03277ce136",
         "order": 3,
-        "width": "6",
-        "height": "2",
+        "width": 0,
+        "height": 0,
         "passthru": true,
         "multiple": false,
         "options": [
@@ -558,9 +558,19 @@
         "y": 160,
         "wires": [
             [
-                "03329b03f89c83c1"
+                "033dc0ce7db456e3"
             ]
         ]
+    },
+    {
+        "id": "e23717efc2d546c2",
+        "type": "ui_spacer",
+        "z": "de30d2341968d3c3",
+        "name": "spacer",
+        "group": "6ba3fae66bb96083",
+        "order": 2,
+        "width": 8,
+        "height": 1
     },
     {
         "id": "a9c0f7eb7370ab01",
@@ -590,29 +600,29 @@
         "sessionExpiry": ""
     },
     {
-        "id": "6b83820ba5d32f51",
+        "id": "6ba3fae66bb96083",
         "type": "ui_group",
         "name": "IOT_project",
-        "tab": "e6086867a1fb966c",
+        "tab": "188d4bd94c3b460e",
         "order": 1,
         "disp": true,
-        "width": "6",
+        "width": 8,
         "collapse": false,
         "className": ""
     },
     {
-        "id": "0ad979918f759bad",
+        "id": "307cea03277ce136",
         "type": "ui_group",
         "name": "Chế độ hệ thống",
-        "tab": "e6086867a1fb966c",
+        "tab": "188d4bd94c3b460e",
         "order": 2,
         "disp": true,
-        "width": "6",
+        "width": 8,
         "collapse": false,
         "className": ""
     },
     {
-        "id": "e6086867a1fb966c",
+        "id": "188d4bd94c3b460e",
         "type": "ui_tab",
         "name": "Home_IOT final report",
         "icon": "dashboard",
