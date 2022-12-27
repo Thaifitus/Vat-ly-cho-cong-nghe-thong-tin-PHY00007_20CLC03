@@ -18,11 +18,13 @@ int photoPin = 35;
 int ledPin0 = 12, ledPin1 = 14, ledPin2 = 27, ledPin3 = 26;
 // Temperature sensor pin
 int tempPin = 32;
+// PIR sensor
+int pirPin = 33;
+int pirState = LOW; // mặc định lúc chưa khởi động
 // Thông báo về ifttt
 char beNotifi[6]; // Bật/tắt thông báo từ người dùng
 bool notifi = false;
 int notifiType = -1; // Loại thông báo (trạng thái đèn = 0, cảnh báo nhiệt độ = 1)
-
 
 // ========== INTERNET CONNECTION ==========
 const char *ssid = "Wokwi-GUEST";
@@ -60,7 +62,7 @@ void mqttReconnect()
 
             // Topic bật/tắt đèn trên website
             client.subscribe("sys/ledOn");
-            
+
             // Topic nhận thông báo từ ifttt
             client.subscribe("sys/notifi");
         }
@@ -91,44 +93,46 @@ void setup()
     pinMode(photoPin, INPUT);
     // Cảm biến nhiệt độ
     pinMode(tempPin, INPUT);
+    // Cảm biến chuyển động
+    pinMode(pirPin, INPUT);
 }
 
 // ========== HÀM HỖ TRỢ ==========
 // Hàm bật/tắt hệ thống đèn
 void TurnLed(int status)
 {
-    switch(status)
+    switch (status)
     {
-        // Tắt đèn
-        case 0:
+    // Tắt đèn
+    case 0:
+    {
+        digitalWrite(ledPin0, LOW);
+        digitalWrite(ledPin1, LOW);
+        digitalWrite(ledPin2, LOW);
+        digitalWrite(ledPin3, LOW);
+        if (strcmp(ledState, "On") == 0)
         {
-            digitalWrite(ledPin0, LOW);
-            digitalWrite(ledPin1, LOW);
-            digitalWrite(ledPin2, LOW);
-            digitalWrite(ledPin3, LOW);
-            if(strcmp(ledState, "On") == 0)
-            {
-                notifi = true;
-                notifiType = 0;
-            }
-            strcpy(ledState, "Off");
-            break;
+            notifi = true;
+            notifiType = 0;
         }
-        // Bật đèn
-        case 1:
+        strcpy(ledState, "Off");
+        break;
+    }
+    // Bật đèn
+    case 1:
+    {
+        digitalWrite(ledPin0, HIGH);
+        digitalWrite(ledPin1, HIGH);
+        digitalWrite(ledPin2, HIGH);
+        digitalWrite(ledPin3, HIGH);
+        if (strcmp(ledState, "Off") == 0)
         {
-            digitalWrite(ledPin0, HIGH);
-            digitalWrite(ledPin1, HIGH);
-            digitalWrite(ledPin2, HIGH);
-            digitalWrite(ledPin3, HIGH);
-            if(strcmp(ledState, "Off") == 0)
-            {
-                notifi = true;
-                notifiType = 0;
-            }
-            strcpy(ledState, "On");
-            break;
+            notifi = true;
+            notifiType = 0;
         }
+        strcpy(ledState, "On");
+        break;
+    }
     }
     client.publish("sys/led", ledState);
 }
@@ -151,20 +155,20 @@ void callback(char *topic, byte *message, unsigned int length)
         sysState = strMsg;
     }
     // Bật/tắt đèn thủ công
-    else if(strcmp(topic, "sys/ledOn") == 0)
+    else if (strcmp(topic, "sys/ledOn") == 0)
     {
         // Tắt đèn
         if (strMsg.compareTo("false") == 0)
         {
-           TurnLed(0);
+            TurnLed(0);
         }
         // Bật đèn
         else
         {
-           TurnLed(1);
+            TurnLed(1);
         }
     }
-    else if(strcmp(topic, "sys/notifi") == 0)
+    else if (strcmp(topic, "sys/notifi") == 0)
     {
         strcpy(beNotifi, strMsg.c_str());
     }
@@ -192,7 +196,7 @@ void loop()
     sprintf(celsius, "%i", celsiusI);
     client.publish("sys/temperature", celsius);
     // Nhiệt độ trên 50C -> thông báo ifttt
-    if(celsiusI > 50)
+    if (celsiusI > 50)
     {
         notifi = true;
         notifiType = 1;
@@ -234,30 +238,51 @@ void loop()
     // Hệ thống chạy thủ công
     default:
     {
-        // Bật/tắt đèn bằng cảm biến âm thanh
-
-        //
+        // Bật/tắt đèn bằng cảm biến chuyển động
+        int val = digitalRead(pirPin);
+        if (val == HIGH)
+        {
+            TurnLed(1);
+            if (pirState == LOW)
+            {
+                // bật cảm biến lên
+                Serial.println("Motion detected!");
+                Serial.println("Delay for 5s");
+                pirState = HIGH;
+            }
+        }
+        else
+        {
+            TurnLed(0);
+            if (pirState == HIGH)
+            {
+                // Tắt cảm biến
+                Serial.println("Motion ended!");
+                Serial.println("Wait 1.2s for next Motion");
+                pirState = LOW;
+            }
+        }
         break;
     }
     }
 
     // Thông báo ifttt
-    if(notifi == true && strcmp(beNotifi, "true") == 0)
+    if (notifi == true && strcmp(beNotifi, "true") == 0)
     {
-        switch(notifiType)
+        switch (notifiType)
         {
-            // Thông báo tình trạng đèn
-            case 0:
-            {
-                client.publish("ifttt/led", ledState);
-                break;
-            }
-            // Cảnh báo nhiệt độ
-            case 1:
-            {
-                client.publish("ifttt/temperature", celsius);
-                break;
-            }
+        // Thông báo tình trạng đèn
+        case 0:
+        {
+            client.publish("ifttt/led", ledState);
+            break;
+        }
+        // Cảnh báo nhiệt độ
+        case 1:
+        {
+            client.publish("ifttt/temperature", celsius);
+            break;
+        }
         }
         // Đã thông báo ifttt
         notifi = false;
