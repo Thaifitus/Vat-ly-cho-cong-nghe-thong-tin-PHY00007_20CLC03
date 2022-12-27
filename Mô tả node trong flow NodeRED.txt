@@ -1,0 +1,8 @@
+Tên:
+
+Cấu hình:
+Server: server gì? Tại sao kết nối server đó
+Topic: ý nghĩa của topic
+QoS: 2 để chắc chắn sẽ có 1 gói tin được gửi và nhận
+
+Công dụng:
