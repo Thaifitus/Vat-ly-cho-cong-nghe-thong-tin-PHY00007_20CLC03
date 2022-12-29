@@ -5,7 +5,7 @@
 - sử dụng chức năng ánh sáng để đo ánh sáng tự động ( chức năng này mô phỏng theo việc khi trời tối đến một giá trị quy ước đèn sẽ tự động bật và ngược lại )
 	+ qua wokwi run code 
 	+ sau khi kết nối thành công ---> qua UI bật chức năng ánh sáng
-	+ sau khi nhận được thông báo sys/led ---> chọn mốc ánh sáng dưới 100 lux để đèn sáng và ngược lại để tắt đèn
+	+ sau khi nhận được thông báo sys/state ---> chọn mốc ánh sáng dưới 100 lux để đèn sáng và ngược lại để tắt đèn
 	+ Chỉnh nhiệt độ trên cảm biến để thông báo về cho web
 - sử dụng chức năng thủ công ( Chức năng thao tác trên giao diện web để có thể tùy chỉnh bật tắt đèn theo ý muốn )
 	+ chuyển chức năng ánh sáng thành thủ công
