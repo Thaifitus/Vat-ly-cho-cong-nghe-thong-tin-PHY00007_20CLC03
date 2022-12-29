@@ -1,0 +1,19 @@
+- Giới thiệu tổng quan về giao diện sản phẩm (khu vực hiển thị + khu vực để chọn chức năng)
+# Chế độ ánh sáng có thể được sử dụng trong nhà hoặc ngoài đường
+# Chế độ thủ công có thể được sử dụng trong nhà hoặc ngoài đường
+# Chế độ chuyển động có thể được sử dụng trong việc lắp đặt hệ thống đèn thông minh ở cầu thang hoặc hành lang
+- sử dụng chức năng ánh sáng để đo ánh sáng tự động ( chức năng này mô phỏng theo việc khi trời tối đến một giá trị quy ước đèn sẽ tự động bật và ngược lại )
+	+ qua wokwi run code 
+	+ sau khi kết nối thành công ---> qua UI bật chức năng ánh sáng
+	+ sau khi nhận được thông báo sys/led ---> chọn mốc ánh sáng dưới 100 lux để đèn sáng và ngược lại để tắt đèn
+	+ Chỉnh nhiệt độ trên cảm biến để thông báo về cho web
+- sử dụng chức năng thủ công ( Chức năng thao tác trên giao diện web để có thể tùy chỉnh bật tắt đèn theo ý muốn )
+	+ chuyển chức năng ánh sáng thành thủ công
+	+ đợi server nhận được tín hiệu ---> qua UI chọn bật / tắt đèn 
+	+ bật IFTT thông báo đến cho điện thoại tình trạng đèn + nhiệt độ
+- sử dụng chức năng chuyển động (Chức năng này mô phỏng cho việc khi có người đi tới tầm quét hồng ngoại của thiết bị thì cảm biến sẽ được bật lên và đèn ở khu vực đó sẽ được bật)
+	+ chuyển chức năng thủ công thành chuyển động
+	+ đợi server nhận được tín hiệu ---> nhấn chọn vào cảm biến chuyển động để cảm biến bật
+
+# Có thể bật IFTT bất cứ lúc nào !!!
+# Khi nhiệt độ đo được trên 50 độ C thì cứ 5s sẽ có 1 thông báo chuyển về cho người dùng !
