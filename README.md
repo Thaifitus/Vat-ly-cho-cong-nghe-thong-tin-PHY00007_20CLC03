@@ -1,4 +1,7 @@
-# Vật lý cho công nghệ thông tin-PHY00007_20CLC03
+# Vật lý cho công nghệ thông tin-PHY00007_20CLC03 (88/100)
+
+![Alt text](final-result.jpg?raw=true "Kết quả đánh giá")
+
 ĐỒ ÁN CUỐI KÌ
 
 Đồ án cuối kỳ phải đáp ứng ít nhất các yêu cầu sau:
